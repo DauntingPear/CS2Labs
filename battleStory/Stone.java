@@ -1,7 +1,11 @@
 package battleStory;
 
 public class Stone extends Entity {
-	//TODO: add default constructor
-	
-	//TODO: add overloaded constructor to set width, height, and depth
+
+    public Stone() {}
+
+    public Stone(double width, double height, double depth) {
+        double dimensions[] = {width, height, depth};
+        this.setDimensions(dimensions);
+    }
 }
