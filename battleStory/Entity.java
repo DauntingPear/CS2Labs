@@ -10,13 +10,72 @@ public abstract class Entity implements Attackable {
     private boolean destroyed = false;
     private String name = "(no name)";
     private String description = "(no description)";
-    private Random random;
+    private Random random; // no get/set
 
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = false; // no get/set
+
+    public void setDimensions(double[] dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public double[] getDimensions() {
+        return dimensions;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setDamageReduction(int damageReduction) {
+        this.damageReduction = damageReduction;
+    }
+
+    public int getDamageReduction() {
+        return damageReduction;
+    }
+
+    public void setEvadePercent(int evadePercent) {
+        this.evadePercent = evadePercent;
+    }
+
+    public double getEvadePercent() {
+        return evadePercent;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        this.destroyed = destroyed;
+    }
+
+    public boolean getDestroyed() {
+        return destroyed;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+
 
 	// TODO: add getters and setters
 	
 	// TODO: implement interface methods
+    
 
     public void setSeed(int seed) {
         random = new Random(seed);
@@ -87,6 +146,15 @@ public abstract class Entity implements Attackable {
         return isHit;
     }
 
-    // TODO: override Object class' toString()
+    @Override
+    public String toString() {
+        String outputString = "A ";
+        if (destroyed) outputString += "(broken)";
+        outputString += this.getName() + "\n";
+        outputString += this.getDescription() + "\n";
+        outputString += "It has " + this.getHealth() + " health left.\n";
+
+        return outputString;
+    }
 }
 
