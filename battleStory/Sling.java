@@ -46,7 +46,6 @@ public class Sling extends Weapon implements Container {
 
     @Override
     public boolean addItem(Entity entity) {
-        int i;
         if (this.isEmpty()) {
             for (double dim : entity.getDimensions()) {
                 if (dim > 5.0) {
