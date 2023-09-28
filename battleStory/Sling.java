@@ -33,6 +33,26 @@ public class Sling extends Weapon implements Container {
     }
 
     @Override
+    public int getDamage() {
+        return 15;
+    }
+
+    @Override
+    public double getHitBonus() {
+        return 0;
+    }
+
+    @Override
+    public String getHitMessage(Entity entity) {
+        return "Twirling the " + this.getName() + " in a vicious arc, the ammo is released from the " + entity.getName() + " with deadly force";
+    }
+
+    @Override
+    public String getMissMessage() {
+        return "The " + this.getName() + " swings wildly, and the ammo careens off into the shadows";
+    }
+
+    @Override
     public boolean removeItem(Entity entity) {
        int i;
        for (i = 0; i < containedItems.size(); i++) {

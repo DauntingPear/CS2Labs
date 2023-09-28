@@ -1,6 +1,6 @@
 package battleStory;
 
-public abstract class Weapon extends Entity implements Attacker {
+abstract class Weapon extends Entity implements Attacker {
 
     private int damage;
     private double hitBonus;
@@ -27,7 +27,7 @@ public abstract class Weapon extends Entity implements Attacker {
         this.hitMessage = hitMessage;
     }
 
-    public String getHitMessage() {
+    public String getHitMessage(Entity entity) {
         return hitMessage;
     }
 
