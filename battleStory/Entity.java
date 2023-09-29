@@ -70,6 +70,10 @@ public abstract class Entity implements Attackable {
         return description;
     }
 
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
 
 
 	// TODO: add getters and setters
