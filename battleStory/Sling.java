@@ -3,11 +3,12 @@ package battleStory;
 import java.util.ArrayList;
 
 public class Sling extends Weapon implements Container {
-    private ArrayList<Entity> containedItems = new ArrayList<>();
-    private double maxDimension = 5.0;
+    private ArrayList<Entity> containedItems;
+    private static double maxDimension = 5.0;
 
     public Sling() {
         setName("basic sling");
+        containedItems = new ArrayList<>();
     }
 
     public double getMaxDimension() {
@@ -37,6 +38,10 @@ public class Sling extends Weapon implements Container {
         return containedItems;
     }
 
+    public void setContianedItems(ArrayList<Entity> containedItems) {
+        this.containedItems = containedItems;
+    }
+
     @Override
     public int getDamage() {
         return 15;
@@ -59,14 +64,11 @@ public class Sling extends Weapon implements Container {
 
     @Override
     public boolean removeItem(Entity entity) {
-       int i;
-       for (i = 0; i < containedItems.size(); i++) {
-           if (containedItems.get(i).equals(entity)) {
-               containedItems.remove(i);
-               return true;
-           }
-       }
-       return false;
+        if (this.isEmpty()) {
+            return false;
+        }
+        containedItems.remove(0);
+        return true;
     }
 
     @Override
@@ -77,7 +79,9 @@ public class Sling extends Weapon implements Container {
                     return false;
                 }
             }
-            this.containedItems.add(0, entity);
+            ArrayList<Entity> itemList = getContainedItems();
+            itemList.add(0, entity);
+            setContianedItems(itemList);
             return true;
         }
         return false;
@@ -104,12 +108,16 @@ public class Sling extends Weapon implements Container {
     @Override
     public String toString() {
         int i = 0;
-        String outputString = super.toString();
+        String outputString = "A ";
+        if (this.isDestroyed()) {
+            outputString += "(broken) ";
+        }
+        outputString += this.getName() + "\n";
+        outputString += this.getDescription() + "\n";
+        outputString += "It has " + this.getHealth() + " health left.\n\n";
 
         outputString += "The " + this.getName() + " contains:\n";
-        for (i = 0; i < containedItems.size(); i++) {
-            outputString += "    A " + containedItems.get(i) + "\n";
-        }
+        outputString += "    A " + containedItems.get(i).getName() + "\n";
         return outputString;
     }
 }
