@@ -48,8 +48,8 @@ public class Sling extends Weapon implements Container {
     }
 
     @Override
-    public String getMissMessage() {
-        return "The " + this.getName() + " swings wildly, and the ammo careens off into the shadows";
+    public String getMissMessage(Entity entity) {
+        return "The " + this.getName() + " swings wildly, and the ammo careens off into the shadows and misses the " + entity.getName();
     }
 
     @Override
