@@ -152,11 +152,13 @@ public abstract class Entity implements Attackable {
 
     @Override
     public String toString() {
-        String outputString = "A ";
-        if (destroyed) outputString += "(broken)";
+        String outputString = "A " + this.getName();
+        if (destroyed) {
+            outputString += "(broken)";
+        }
         outputString += this.getName() + "\n";
         outputString += this.getDescription() + "\n";
-        outputString += "It has " + this.getHealth() + " health left.\n";
+        outputString += "It has " + this.getHealth() + " health left.\n\n";
 
         return outputString;
     }
