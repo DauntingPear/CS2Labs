@@ -11,6 +11,7 @@ abstract class Weapon extends Entity implements Attacker {
         this.damage = damage;
     }
 
+    @Override
     public int getDamage() {
         return damage;
     }
@@ -19,6 +20,7 @@ abstract class Weapon extends Entity implements Attacker {
         this.hitBonus = hitBonus;
     }
 
+    @Override
     public double getHitBonus() {
         return hitBonus;
     }
@@ -27,6 +29,7 @@ abstract class Weapon extends Entity implements Attacker {
         this.hitMessage = hitMessage;
     }
 
+    @Override
     public String getHitMessage(Entity entity) {
         return hitMessage;
     }
@@ -40,6 +43,7 @@ abstract class Weapon extends Entity implements Attacker {
     }
 
 
+    @Override
     public boolean attack(Entity entityToAttack, double distanceInMeters) {
        return entityToAttack.receiveAttack(this, distanceInMeters);
     }
