@@ -4,21 +4,26 @@ import java.util.ArrayList;
 
 public class Sling extends Weapon implements Container {
     private ArrayList<Entity> containedItems = new ArrayList<>();
+    private double maxDimension = 5.0;
 
     public Sling() {
         setName("basic sling");
     }
 
+    public double getMaxDimension() {
+        return maxDimension;
+    }
+
     public String getAddingMessage(Entity entity) {
-        return "loads a " + entity + " into the " + this.getName();
+        return "loads a " + entity.getName() + " into the " + this.getName();
     }
 
     public String getCannotAddMessage(Entity entity) {
-        return "cannot fit a " + entity + "into the " + this.getName();
+        return "cannot fit a " + entity.getName() + " into the " + this.getName();
     }
 
     public String getWithdrawingMessage(Entity entity) {
-        return "takes a " + entity + " from the " + this.getName();
+        return "takes a " + entity.getName() + " from the " + this.getName();
     }
 
     public boolean isEmpty() {
@@ -68,10 +73,11 @@ public class Sling extends Weapon implements Container {
     public boolean addItem(Entity entity) {
         if (this.isEmpty()) {
             for (double dim : entity.getDimensions()) {
-                if (dim > 5.0) {
+                if (dim > getMaxDimension()) {
                     return false;
                 }
             }
+            this.containedItems.add(0, entity);
             return true;
         }
         return false;

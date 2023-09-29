@@ -1,6 +1,7 @@
 package battleStory;
 
 public class SlingOfFreezing extends Sling {
+    private static double maxDimensions = 10.0;
    //TODO: override specified methods with default values
    
     @Override
@@ -15,17 +16,12 @@ public class SlingOfFreezing extends Sling {
 
     @Override
     public String getName() {
-        return "Sling of freezing";
+        return "sling of freezing";
     }
 
     @Override
-    public boolean addItem(Entity entity) {
-        for (double dim : entity.getDimensions()) {
-            if (dim > 10.0) {
-                return false;
-            }
-        }
-        super.addItem(entity);
-        return true;
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
     }
 }
