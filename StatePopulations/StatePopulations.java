@@ -93,20 +93,33 @@ public class StatePopulations {
 
         // Read in ZIP code from user
         myZipCode = scnr.nextInt();
+        String myAbbr = "";
 
         for (i = 0; i < zipCodeState.size(); ++i) {
             // TODO: Using ZIP code, find state abbreviation
-
+            StatePair<Integer, String> currentPair = zipCodeState.get(i);
+            if (currentPair.getValue1() == myZipCode) {
+                myAbbr = currentPair.getValue2();
+            }
         }
 
 
         for (i = 0; i < abbrevState.size(); ++i) {
             // TODO: Using state abbreviation, find state name
+            StatePair<String, String> currentPair = abbrevState.get(i);
+            if (currentPair.getValue1().equals(myAbbr)) {
+                myAbbr = currentPair.getValue2();
+            }
         }
 
 
         for (i = 0; i < statePopulation.size(); ++i) {
             // TODO: Using state name, find population. Print pair info.
+            StatePair<String, Integer> currentPair = statePopulation.get(i);
+            if (currentPair.getValue1().equals(myAbbr)) {
+                System.out.print(currentPair.getValue1() + ": ");
+                System.out.print(currentPair.getValue2() + "\n");
+            }
         }
     }
 }
