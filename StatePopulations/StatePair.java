@@ -26,6 +26,6 @@ public class StatePair <Type1 extends Comparable<Type1>, Type2 extends Comparabl
     }
 
     public void printInfo() {
-        System.out.println();
+        System.out.println(this.value1 + ": " + this.value2);
     }
 }
