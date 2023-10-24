@@ -9,4 +9,17 @@ public class LabProgram {
 
         System.out.println(input);
     }
+
+    public static void doSomething(AnotherClass foo) {
+        Scanner scan = new Scanner(System.in);
+        int input = scan.nextInt();
+
+        System.out.println(input);
+    }
+}
+
+class AnotherClass {
+    public void doSomething() {
+        LabProgram.doSomething(this);
+    }
 }
