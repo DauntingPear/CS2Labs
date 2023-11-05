@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LabProgram {
@@ -12,7 +13,15 @@ public class LabProgram {
 
     public static void doSomething(AnotherClass foo) {
         Scanner scan = new Scanner(System.in);
-        int input = scan.nextInt();
+
+        int input = 0;
+
+        try {
+            input = scan.nextInt();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Error occured");
+        }
 
         System.out.println(input);
     }
