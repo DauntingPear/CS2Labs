@@ -9,17 +9,17 @@ public class DataVisualizer {
         String title;
         System.out.println("Enter a title for the data:");
         title = scnr.nextLine();
-        System.out.println("You entered: " + title);
+        System.out.println("You entered: " + title + "\n");
 
 
         String col1h;
         String col2h;
 
-        System.out.println("Enter column 1 header:");
+        System.out.println("Enter the column 1 header:");
         col1h = scnr.nextLine();
         System.out.println("You entered: " + col1h + "\n");
 
-        System.out.println("Enter column 2 header:");
+        System.out.println("Enter the column 2 header:");
         col2h = scnr.nextLine();
         System.out.println("You entered: " + col2h + "\n");
 
@@ -55,6 +55,7 @@ public class DataVisualizer {
                 System.out.println("Data string: " + data[0]);
                 data[1] = data[1].replaceAll("\\s+", "");
                 System.out.println("Data integer: " + data[1]);
+                System.out.println();
                 dataPoints.add(data);
             }
 
@@ -62,6 +63,7 @@ public class DataVisualizer {
             System.out.println("Enter a data point (-1 to stop input):");
             input = scnr.nextLine();
         }
+        System.out.println();
 
         int i;
 
@@ -75,6 +77,7 @@ public class DataVisualizer {
 
             System.out.printf("%-20s|%23s\n", data1, data2);
         }
+        System.out.println();
 
 
         for (i = 0; i < dataPoints.size(); i++) {
