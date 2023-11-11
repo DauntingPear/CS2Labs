@@ -55,6 +55,9 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         intList.add(50);
         intList.add(60);
         intList.add(70);
+        intList.add(50);
+        intList.add(60);
+        intList.add(70);
 
         System.out.println(intList.size());
 
