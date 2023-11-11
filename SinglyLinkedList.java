@@ -68,6 +68,13 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public void addFirst(T n) {
+        AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
+        newNode.setData(n);
+
+        newNode.setNext(head);
+        head = newNode;
+
+        length++;
     }
 
     public void clear() {
