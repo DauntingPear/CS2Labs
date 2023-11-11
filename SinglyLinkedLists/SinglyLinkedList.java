@@ -10,7 +10,19 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public void add(T n) {
+        AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
+        newNode.setData(n);
 
+        if (head == null || tail == null) {
+            tail = newNode;
+            head = newNode;
+        }
+        else {
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+
+        length++;
     }
 
     public void addFirst(T n) {
