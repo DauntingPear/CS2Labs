@@ -1,5 +1,7 @@
 public class SinglyLinkedNode<T> extends AbstractSinglyLinkedNode<T> {
 
+    public SinglyLinkedNode () {}
+
     public SinglyLinkedNode (T data) {
         this.data = data;
     }
