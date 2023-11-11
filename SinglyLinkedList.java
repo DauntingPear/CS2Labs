@@ -91,8 +91,38 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public AbstractSinglyLinkedNode<T> removeAt(int index) {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+        AbstractSinglyLinkedNode<T> currNode = head;
+        AbstractSinglyLinkedNode<T> prevNode = null;
+        int i;
+
+        if (index > length) {
+            return null;
+        }
+
+        if (currNode == null) {
+            return null;
+        }
+
+        if (index == 0) {
+            currNode = head;
+            head = head.getNext();
+        }
+        else {
+            for (i = 0; i < index; i++) {
+                prevNode = currNode;
+                currNode = currNode.getNext();
+                prevNode.setNext(currNode.getNext());
+                if (tail == currNode) {
+                    tail = prevNode;
+                }
+            }
+        }
+
+
+        length--;
+
+        return currNode;
+
     }
 
     public boolean remove(T n) {
