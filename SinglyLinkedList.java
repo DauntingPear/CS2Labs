@@ -1,8 +1,18 @@
 public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
 
     public AbstractSinglyLinkedNode<T> getNode(int index) {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+        AbstractSinglyLinkedNode<T> currNode = head;
+        int i;
+
+        for (i = 0; i < index; i++) {
+            if (currNode.getNext() != null) {
+                currNode = currNode.getNext();
+            } else {
+                break;
+            }
+        }
+
+        return currNode;
     }
 
     public void add(int index, T n) {
@@ -59,9 +69,16 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         intList.add(60);
         intList.add(70);
 
-        System.out.println(intList.size());
-
         intList.printList();
+
+
+        AbstractSinglyLinkedList<Integer> singleNode = new SinglyLinkedList<>();
+        singleNode.add(50);
+        System.out.println(singleNode.getNode(0));
+        System.out.println(singleNode.getNode(2));
+
+
+        AbstractSinglyLinkedList<Integer> emptyList = new SinglyLinkedList<>();
 
     }
 
