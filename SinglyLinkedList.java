@@ -1,7 +1,5 @@
 public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
 
-    public SinglyLinkedList() {}
-
     public AbstractSinglyLinkedNode<T> getNode(int index) {
         AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
         return node;
