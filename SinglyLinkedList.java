@@ -3,6 +3,8 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     public SinglyLinkedList() {}
 
     public AbstractSinglyLinkedNode<T> getNode(int index) {
+        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
+        return node;
     }
 
     public void add(int index, T n) {
@@ -20,15 +22,22 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public AbstractSinglyLinkedNode<T> remove() {
+        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
+        return node;
     }
 
     public AbstractSinglyLinkedNode<T> removeAt(int index) {
+        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
+        return node;
     }
 
     public boolean remove(T n) {
+        return true;
     }
 
     public AbstractSinglyLinkedNode<T> set(int index, T n) {
+        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
+        return node;
     }
 
     public static void main(String args[]) {
