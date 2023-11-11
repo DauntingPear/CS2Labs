@@ -126,7 +126,44 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public boolean remove(T n) {
-        return true;
+        AbstractSinglyLinkedNode<T> node = head;
+        AbstractSinglyLinkedNode<T> prevNode = head;
+        boolean removed = false;
+
+        if (node == null) {
+            return false;
+        }
+
+        if (head.getData() == n) {
+            head = node.getNext();
+            node.setNext(null);
+            length--;
+            return true;
+        }
+
+        while(node != null) {
+            if (node.getData() == n) {
+                removed = true;
+                break; 
+            }
+            prevNode = node;
+            node = node.getNext();
+        }
+
+        if (removed == false) {
+            return false;
+        }
+
+        prevNode.setNext(node.getNext());
+        node.setNext(null);
+        if (node == tail) {
+            tail = prevNode;
+        }
+        length--;
+
+        return removed;
+
+
     }
 
     public AbstractSinglyLinkedNode<T> set(int index, T n) {
