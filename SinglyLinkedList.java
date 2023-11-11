@@ -16,7 +16,39 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public void add(int index, T n) {
+        AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
+        newNode.setData(n);
 
+        AbstractSinglyLinkedNode<T> currNode = head;
+        AbstractSinglyLinkedNode<T> prevNode = null;
+        int i;
+
+        if (index > length) {
+            System.out.println("Index does not exist");
+            return;
+        }
+
+        if (currNode == null) {
+            head = newNode;
+            tail = newNode;
+        }
+        else if (length == 1) {
+            head.setNext(newNode);
+            tail = newNode;
+        }
+        else {
+            for (i = 0; i < index; i++) {
+                if (currNode.getNext() == null) {
+                    break;
+                }
+                prevNode = currNode;
+                currNode = currNode.getNext();
+            }
+
+            newNode.setNext(currNode);
+            prevNode.setNext(newNode);
+        }
+        length++;
     }
 
     public void add(T n) {
