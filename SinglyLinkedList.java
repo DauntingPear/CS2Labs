@@ -84,8 +84,10 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public AbstractSinglyLinkedNode<T> remove() {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+        AbstractSinglyLinkedNode<T> removedNode= head;
+        head = head.getNext();
+        length--;
+        return removedNode;
     }
 
     public AbstractSinglyLinkedNode<T> removeAt(int index) {
@@ -111,6 +113,9 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         intList.add(60);
         intList.add(70);
 
+        intList.printList();
+
+        intList.remove();
         intList.printList();
 
 
