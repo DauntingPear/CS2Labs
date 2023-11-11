@@ -78,6 +78,9 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public void clear() {
+        head = null;
+        tail = null;
+        length = 0;
     }
 
     public AbstractSinglyLinkedNode<T> remove() {
