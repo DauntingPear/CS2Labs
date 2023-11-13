@@ -167,8 +167,38 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public AbstractSinglyLinkedNode<T> set(int index, T n) {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+
+        AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
+        newNode.setData(n);
+
+        AbstractSinglyLinkedNode<T> currNode = head;
+        AbstractSinglyLinkedNode<T> prevNode = null;
+        int i;
+
+        if (index > length) {
+            System.out.println("Index does not exist");
+            return null;
+        }
+
+        for (i = 0; i < index; i++) {
+            if (currNode.getNext() == null) {
+                break;
+            }
+            prevNode = currNode;
+            currNode = currNode.getNext();
+        }
+
+        if (prevNode == null) {
+            head = newNode;
+            newNode.setNext(currNode.getNext());
+            currNode.setNext(null);
+        } else {
+            newNode.setNext(currNode.getNext());
+            prevNode.setNext(newNode);
+
+            currNode.setNext(null);
+        }
+        return newNode;
     }
 
     public static void main(String args[]) {
