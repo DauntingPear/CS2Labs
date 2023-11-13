@@ -78,25 +78,127 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
     }
 
     public void clear() {
+        head = null;
+        tail = null;
+        length = 0;
     }
 
     public AbstractSinglyLinkedNode<T> remove() {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+        AbstractSinglyLinkedNode<T> removedNode= head;
+        head = head.getNext();
+        length--;
+        return removedNode;
     }
 
     public AbstractSinglyLinkedNode<T> removeAt(int index) {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+        AbstractSinglyLinkedNode<T> currNode = head;
+        AbstractSinglyLinkedNode<T> prevNode = null;
+        int i;
+
+        if (index > length) {
+            return null;
+        }
+
+        if (currNode == null) {
+            return null;
+        }
+
+        if (index == 0) {
+            currNode = head;
+            head = head.getNext();
+        }
+        else {
+            for (i = 0; i < index; i++) {
+                prevNode = currNode;
+                currNode = currNode.getNext();
+                prevNode.setNext(currNode.getNext());
+                if (tail == currNode) {
+                    tail = prevNode;
+                }
+            }
+        }
+
+
+        length--;
+
+        return currNode;
+
     }
 
     public boolean remove(T n) {
-        return true;
+        AbstractSinglyLinkedNode<T> node = head;
+        AbstractSinglyLinkedNode<T> prevNode = head;
+        boolean removed = false;
+
+        if (node == null) {
+            return false;
+        }
+
+        if (head.getData() == n) {
+            head = node.getNext();
+            node.setNext(null);
+            length--;
+            return true;
+        }
+
+        while(node != null) {
+            if (node.getData() == n) {
+                removed = true;
+                break; 
+            }
+            prevNode = node;
+            node = node.getNext();
+        }
+
+        if (removed == false) {
+            return false;
+        }
+
+        prevNode.setNext(node.getNext());
+        node.setNext(null);
+        if (node == tail) {
+            tail = prevNode;
+        }
+        length--;
+
+        return removed;
+
+
     }
 
     public AbstractSinglyLinkedNode<T> set(int index, T n) {
-        AbstractSinglyLinkedNode<T> node = new SinglyLinkedNode<>();
-        return node;
+
+        AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
+        newNode.setData(n);
+
+        AbstractSinglyLinkedNode<T> currNode = head;
+        AbstractSinglyLinkedNode<T> prevNode = null;
+        int i;
+
+        if (index > length) {
+            System.out.println("Index does not exist");
+            return null;
+        }
+
+        for (i = 0; i < index; i++) {
+            if (currNode.getNext() == null) {
+                break;
+            }
+            prevNode = currNode;
+            currNode = currNode.getNext();
+        }
+
+        if (prevNode == null) {
+            head = newNode;
+            newNode.setNext(currNode.getNext());
+            currNode.setNext(null);
+        } else {
+            newNode.setNext(currNode.getNext());
+            prevNode.setNext(newNode);
+
+            currNode.setNext(null);
+        }
+        return newNode;
     }
 
     public static void main(String args[]) {
@@ -108,6 +210,9 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         intList.add(60);
         intList.add(70);
 
+        intList.printList();
+
+        intList.remove();
         intList.printList();
 
 
