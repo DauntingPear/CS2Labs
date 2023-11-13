@@ -96,33 +96,44 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         int i;
 
         if (index > length) {
+            System.out.println("Index does not exist");
             return null;
         }
 
-        if (currNode == null) {
-            return null;
-        }
-
-        if (index == 0) {
-            currNode = head;
-            head = head.getNext();
-        }
-        else {
+        // remove only node
+        if (currNode.getNext() == null) {
+            head = null;
+            tail = null;
+        } else {
+            // get selected node
             for (i = 0; i < index; i++) {
+                System.out.println("loop: " + i);
                 prevNode = currNode;
                 currNode = currNode.getNext();
+                System.out.println(prevNode.getData());
+                System.out.println(currNode.getData());
+            }
+            // remove head node
+            if (prevNode == null) {
+                System.out.println("prevnode null");
+ 
+                head = head.getNext();
+                currNode.setNext(null);
+            }
+            else {
+                System.out.println("elsed");
                 prevNode.setNext(currNode.getNext());
-                if (tail == currNode) {
-                    tail = prevNode;
-                }
+
+                currNode.setNext(null);
+            }
+            if (currNode == tail) {
+                System.out.println("tail");
+                tail = prevNode;
             }
         }
-
-
         length--;
 
         return currNode;
-
     }
 
     public boolean remove(T n) {
