@@ -24,7 +24,7 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         int i;
 
         if (index > length) {
-            System.out.println("Index does not exist");
+            System.out.println("Oh no! Can't append at position " + index + "!");
             return;
         }
 
@@ -32,21 +32,23 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
             head = newNode;
             tail = newNode;
         }
-        else if (length == 1) {
-            head.setNext(newNode);
-            tail = newNode;
+        else if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
         }
         else {
             for (i = 0; i < index; i++) {
-                if (currNode.getNext() == null) {
-                    break;
-                }
                 prevNode = currNode;
                 currNode = currNode.getNext();
             }
 
-            newNode.setNext(currNode);
-            prevNode.setNext(newNode);
+            if (currNode == null) {
+                tail = newNode;
+                prevNode.setNext(newNode);
+            } else {
+                prevNode.setNext(newNode);
+                newNode.setNext(currNode);
+            }
         }
         length++;
     }
@@ -71,8 +73,15 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         AbstractSinglyLinkedNode<T> newNode = new SinglyLinkedNode<>();
         newNode.setData(n);
 
-        newNode.setNext(head);
-        head = newNode;
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            newNode.setNext(head);
+            head = newNode;
+        }
+
 
         length++;
     }
@@ -96,7 +105,7 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         int i;
 
         if (index > length) {
-            System.out.println("Index does not exist");
+            System.out.println("Oh no! Can't append at position " + index + "!");
             return null;
         }
 
@@ -107,27 +116,21 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         } else {
             // get selected node
             for (i = 0; i < index; i++) {
-                System.out.println("loop: " + i);
                 prevNode = currNode;
                 currNode = currNode.getNext();
-                System.out.println(prevNode.getData());
-                System.out.println(currNode.getData());
             }
             // remove head node
             if (prevNode == null) {
-                System.out.println("prevnode null");
  
                 head = head.getNext();
                 currNode.setNext(null);
             }
             else {
-                System.out.println("elsed");
                 prevNode.setNext(currNode.getNext());
 
                 currNode.setNext(null);
             }
             if (currNode == tail) {
-                System.out.println("tail");
                 tail = prevNode;
             }
         }
@@ -186,8 +189,8 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         AbstractSinglyLinkedNode<T> prevNode = null;
         int i;
 
-        if (index > length) {
-            System.out.println("Index does not exist");
+        if (index > length-1) {
+            System.out.println("Oh noes! SLL doesn't have a position " + index + "!");
             return null;
         }
 
