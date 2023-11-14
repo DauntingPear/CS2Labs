@@ -24,7 +24,7 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         int i;
 
         if (index > length) {
-            System.out.println("Index does not exist");
+            System.out.println("Oh no! Can't append at position " + index + "!");
             return;
         }
 
@@ -103,7 +103,7 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         int i;
 
         if (index > length) {
-            System.out.println("Index does not exist");
+            System.out.println("Oh no! Can't append at position " + index + "!");
             return null;
         }
 
@@ -193,8 +193,8 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         AbstractSinglyLinkedNode<T> prevNode = null;
         int i;
 
-        if (index > length) {
-            System.out.println("Index does not exist");
+        if (index > length-1) {
+            System.out.println("Oh noes! SLL doesn't have a position " + index + "!");
             return null;
         }
 
