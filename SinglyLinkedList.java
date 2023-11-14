@@ -114,27 +114,21 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
         } else {
             // get selected node
             for (i = 0; i < index; i++) {
-                System.out.println("loop: " + i);
                 prevNode = currNode;
                 currNode = currNode.getNext();
-                System.out.println(prevNode.getData());
-                System.out.println(currNode.getData());
             }
             // remove head node
             if (prevNode == null) {
-                System.out.println("prevnode null");
  
                 head = head.getNext();
                 currNode.setNext(null);
             }
             else {
-                System.out.println("elsed");
                 prevNode.setNext(currNode.getNext());
 
                 currNode.setNext(null);
             }
             if (currNode == tail) {
-                System.out.println("tail");
                 tail = prevNode;
             }
         }
