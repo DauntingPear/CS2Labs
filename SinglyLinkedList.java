@@ -32,21 +32,23 @@ public class SinglyLinkedList<T> extends AbstractSinglyLinkedList<T> {
             head = newNode;
             tail = newNode;
         }
-        else if (length == 1) {
-            head.setNext(newNode);
-            tail = newNode;
+        else if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
         }
         else {
             for (i = 0; i < index; i++) {
-                if (currNode.getNext() == null) {
-                    break;
-                }
                 prevNode = currNode;
                 currNode = currNode.getNext();
             }
 
-            newNode.setNext(currNode);
-            prevNode.setNext(newNode);
+            if (currNode == null) {
+                tail = newNode;
+                prevNode.setNext(newNode);
+            } else {
+                prevNode.setNext(newNode);
+                newNode.setNext(currNode);
+            }
         }
         length++;
     }
