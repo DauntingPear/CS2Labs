@@ -1,0 +1,3 @@
+[submodule "BSTLab"]
+	path = BSTLab
+	url = git@github.com:DauntingPear/BSTLab.git
