@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class LabProgram {
+    static int comparisons = 0;
     // Read size and create an array of size ints.
     // Read size ints, storing them in the array.
     // Return the array.
@@ -46,6 +47,7 @@ public class LabProgram {
                 ++rightPos;
             }
             ++mergePos;
+            comparisons++;
         }
 
         while (leftPos <= j) {
