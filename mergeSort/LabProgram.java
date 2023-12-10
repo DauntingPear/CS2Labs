@@ -93,6 +93,8 @@ public class LabProgram {
 
         System.out.print("\nsorted:   ");
         printNums(numbers);
+
+        System.out.println("\ncomparisons: " + comparisons);
     }
 }
 
